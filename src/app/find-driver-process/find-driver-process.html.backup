@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="process" [ngSwitch]="activeStep">
+    <ng-template [ngIf]="activeStep < 7">
+      <ng-container>
+        <div class="row question">
+          <div (click)="nextStep('prev')" class="arrow"></div>
+          <p>{{ questionsList[activeStep] }}</p>
+        </div>
+      </ng-container>
+      <ng-container>
+        <div class="row select gender">
+          <div class="choice">남성</div>
+          <div class="choice">여성</div>
+        </div>
+      </ng-container>
+      <ng-container
+        ><div class="row">
+          <div class="column-2">
+            <img
+              (click)="nextStep('next')"
+              src=""
+              alt="왼손"
+              aria-placeholder="왼손"
+            />
+          </div>
+          <div class="column-2">
+            <img
+              (click)="nextStep('next')"
+              src=""
+              alt="오른손"
+              aria-placeholder="오른손"
+            />
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+    <ng-template [ngIf]="activeStep >= 7">
+      hi
+      <div *ngFor="let item of showResults">
+        {{ item | json }}
+      </div>
+    </ng-template>
+  </div>
+</div>

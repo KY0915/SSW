@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nanum Square" !important;
+}
+button {
+  font-family: inherit;
+  font-weight: 600 !important;
+}
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+  width: 0px; /* Remove scrollbar space */
+}
+
+/* use viewport-relative units to cover page fully */
+
+/* include border and padding in element width and height */
+* {
+  box-sizing: border-box;
+  font-weight: 600 !important;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-2 {
+  flex: 50%;
+}
+
+.ng5-slider .ng5-slider-bar {
+  left: 0;
+  width: 100%;
+  height: 24px !important;
+  z-index: 1;
+  background: #f6f6f6 !important;
+  border-radius: 12px !important;
+}
+.ng5-slider-pointer:after {
+  background: none !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+  cursor: pointer;
+  width: 36px !important;
+  height: 36px !important;
+  top: -6px !important;
+  background-color: #4a34b6;
+  z-index: 3;
+  border-radius: 16px;
+}
+
+.ng5-slider .ng5-slider-selection {
+  z-index: 2;
+  background: #a38fff !important;
+  border-radius: 2px;
+}
+.ng5-slider.animate .ng5-slider-bubble.ng5-slider-limit {
+  display: none;
+}
+* {
+  -webkit-font-smoothing: antialiased;
+}

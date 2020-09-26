@@ -1,0 +1,294 @@
+.container {
+  background-color: #4a34b6;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.slide {
+  min-width: 100vw;
+  width: 100vw;
+}
+
+.select {
+  padding: 36px;
+}
+.block-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  p {
+    margin: 0;
+  }
+}
+.choice-block-2 {
+  cursor: pointer;
+  padding: 24px;
+
+  width: 540px;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 32 (1.6);
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  background-color: #f6f6f6;
+  margin: 4px;
+  border-radius: 8px;
+}
+.choice-block {
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 32 (1.6);
+  font-size: 20px;
+  font-weight: 400;
+  color: #848484;
+  margin: 4px;
+  min-width: 120px;
+  min-height: 48px;
+  border-radius: 8px;
+  background-color: #f6f6f6;
+}
+
+.choice-block-3 {
+  cursor: pointer;
+  max-width: 150px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 32 (1.6);
+  font-size: 20px;
+  font-weight: 800;
+  color: black;
+  margin: 4px;
+  min-width: 120px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #f6f6f6;
+}
+.choice-block-no-background {
+  font-family: "Nanum Square" !important;
+
+  color: #848484;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 32 (1.6);
+  font-size: 20px;
+  font-weight: 800;
+  min-width: 120px;
+  padding: 8px;
+}
+.one {
+  background-color: #4a34b6;
+}
+.two {
+  background-color: #4a34b6;
+  background: #4a34b6 url("../../assets/images/Golfballs_all.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.three {
+  .side-bg {
+    background-position: bottom !important;
+    background-repeat: no-repeat !important;
+    padding-bottom: 160px;
+    padding-top: 88px;
+    background: url("../../assets/images/golf side.svg");
+  }
+}
+
+.four {
+  .top-bg {
+    background-position: bottom !important;
+    background-repeat: no-repeat !important;
+    padding-top: 48px;
+    padding-bottom: 423px;
+    background: url("../../assets/images/golf top.svg");
+  }
+}
+
+.five {
+  .angle-bg {
+    background-position: bottom !important;
+    background-repeat: no-repeat !important;
+    padding-top: 48px;
+    padding-bottom: 423px;
+    background: url("../../assets/images/golf angle.svg");
+  }
+}
+.wrapper {
+  min-width: 1440px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 400vw;
+  height: 100%;
+}
+.question {
+  padding: 10rem 0 0rem 0;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 72px;
+  text-align: center;
+}
+.choice {
+  font-size: 20px;
+  margin: 1rem;
+  text-align: center;
+  display: inline-block;
+  line-height: 32px;
+  color: white;
+  opacity: 50%;
+  &:hover {
+    opacity: 100%;
+    border-bottom: 3px solid;
+  }
+}
+.clicked {
+  opacity: 100%;
+  border-bottom: 3px solid;
+}
+.clicked-2 {
+  color: white;
+  background-color: black;
+}
+
+.gender {
+  margin-top: 56px;
+  text-align: center;
+}
+
+.arrow {
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+  height: 15px;
+  width: 15px;
+  transform: rotate(135deg);
+  position: relative;
+  align-self: center;
+}
+.column-2 {
+  margin: 4px;
+  justify-items: center;
+  height: 500px;
+  background-color: white;
+}
+
+.row {
+}
+
+.slide-prev {
+  position: fixed;
+  left: 20%;
+  cursor: pointer;
+  &.black {
+    color: black;
+  }
+}
+
+.slide-prev-text {
+  position: relative;
+  /* right: 20%; */
+  font-size: 1rem;
+  top: 20px;
+  right: 45px;
+}
+
+.next-button {
+  border: none;
+  width: 350px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.25;
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  padding: 132px 0 176px 0;
+  border: 0;
+  display: inline-flex;
+}
+
+.number-input,
+.number-input * {
+  box-sizing: border-box;
+}
+
+.number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 2rem;
+  height: 3px;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type="number"] {
+  width: 450px;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-width: 0 2px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: transparent;
+  color: #ffffff;
+}
+.score {
+  font-weight: 800;
+  font-size: 142px;
+  line-height: 168 (1.183);
+  color: #ffffff;
+}
+.cost-slider {
+  width: 50%;
+}

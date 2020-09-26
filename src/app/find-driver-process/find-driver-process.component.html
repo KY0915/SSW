@@ -1,0 +1,343 @@
+<form [formGroup]="userForm">
+  <div class="wrapper" #wrapper>
+    <div class="slide one" #one>
+      <div style="position: absolute; top: 10%; left: 1500px">
+        <img src="../../assets/images/flag-top-right.png" />
+      </div>
+      <div style="position: absolute; top: 40%; left: 100px">
+        <img src="../../assets/images/flag-left.png" />
+      </div>
+      <div style="position: absolute; top: 70%; left: 1550px">
+        <img src="../../assets/images/flag-bottom-right.png" />
+      </div>
+      <div class="question">
+        <span>
+          <span
+            class="slide-prev"
+            [ngClass]="{ black: activeStep > 1 }"
+            (click)="scrollLeft($event)"
+            >< <span class="slide-prev-text"> 뒤로 </span></span
+          >
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row select">
+        <div
+          (click)="clickSubQuestion(this.choice1)"
+          class="choice clicked"
+          #choice1
+        >
+          핸디
+        </div>
+        <div (click)="clickSubQuestion(this.choice2)" class="choice" #choice2>
+          스코어
+        </div>
+      </div>
+      <div class="row">
+        <div class="number-input">
+          <button
+            type="button"
+            class="minus"
+            (click)="handicapSubtract(currentChoice)"
+          ></button>
+
+          <input
+            *ngIf="currentChoice === 'handicap'"
+            class="score"
+            style="font-size: 142px"
+            formControlName="handicap"
+            min="0"
+            name="quantity"
+            type="number"
+          />
+          <input
+            *ngIf="currentChoice === 'score'"
+            class="score"
+            style="font-size: 142px"
+            formControlName="score"
+            min="0"
+            name="quantity"
+            type="number"
+          />
+          <button
+            type="button"
+            class="plus"
+            (click)="handicapAdd(currentChoice)"
+          ></button>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="next-button" (click)="scroll()">
+          다음
+        </button>
+      </div>
+    </div>
+    <div class="slide two" #two>
+      <div class="question">
+        <span>
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row">
+        <div class="number-input" style="">
+          <button
+            type="button"
+            class="minus"
+            (click)="handicapSubtract('distance')"
+          ></button>
+
+          <input
+            class="score"
+            style="font-size: 142px"
+            formControlName="distance"
+            min="0"
+            name="quantity"
+            type="number"
+          />
+
+          <button
+            type="button"
+            class="plus"
+            (click)="handicapAdd('distance')"
+          ></button>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 130px">
+        <button type="button" class="next-button" (click)="scroll()">
+          다음
+        </button>
+      </div>
+    </div>
+    <div class="slide three" #three>
+      <div class="question">
+        <span style="color: black">
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row side-bg">
+        <div class="block-container">
+          <div
+            (click)="userForm.get('trajectory').patchValue('very high')"
+            [appHighlight]="'black'"
+            class="choice-block"
+          >
+            <p>아주 높음</p>
+          </div>
+          <div
+            (click)="userForm.get('trajectory').patchValue('high')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>높음</p>
+          </div>
+          <div
+            (click)="userForm.get('trajectory').patchValue('middle')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>보통</p>
+          </div>
+          <div
+            (click)="userForm.get('trajectory').patchValue('low')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>낮음</p>
+          </div>
+          <div
+            (click)="userForm.get('trajectory').patchValue('very low')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>아주 낮음</p>
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <button
+          type="button"
+          class="next-button"
+          style="background-color: black; color: white; margin-top: 90px"
+          (click)="scroll()"
+        >
+          다음
+        </button>
+      </div>
+    </div>
+    <div class="slide four" #four>
+      <div class="question">
+        <span style="color: black">
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row top-bg">
+        <div class="block-container" style="flex-direction: row">
+          <div
+            (click)="userForm.get('CG2').patchValue('hook')"
+            [appHighlight]="'black'"
+            class="choice-block"
+          >
+            <p>훅 (왼쪽)</p>
+          </div>
+          <div
+            (click)="userForm.get('CG2').patchValue('middle')"
+            [appHighlight]="'black'"
+            class="choice-block"
+          >
+            <p>중간</p>
+          </div>
+          <div
+            (click)="userForm.get('CG2').patchValue('slice')"
+            [appHighlight]="'black'"
+            class="choice-block"
+          >
+            <p>슬라이스 (오른쪽)</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          type="button"
+          class="next-button"
+          style="background-color: black; color: white; margin-top: 90px"
+          (click)="scroll()"
+        >
+          다음
+        </button>
+      </div>
+    </div>
+    <div class="slide five" #five>
+      <div class="question">
+        <span style="color: black">
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row angle-bg">
+        <div class="block-container" style="flex-direction: row">
+          <div
+            (click)="userForm.get('accuracy').patchValue('accurate')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>정확함</p>
+          </div>
+          <div
+            (click)="userForm.get('accuracy').patchValue('normal')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>중간</p>
+          </div>
+          <div
+            (click)="userForm.get('accuracy').patchValue('inaccurate')"
+            class="choice-block"
+            [appHighlight]="'black'"
+          >
+            <p>부정확함</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          type="button"
+          class="next-button"
+          style="background-color: black; color: white; margin-top: 90px"
+          (click)="scroll()"
+        >
+          다음
+        </button>
+      </div>
+    </div>
+    <div class="slide six" #six>
+      <div class="question">
+        <span style="color: black">
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row" style="flex-direction: column; padding: 38px">
+        <img src="../../assets/images/lock.svg" />
+        <div class="cost-slider">
+          <ng5-slider
+            [(value)]="minValue"
+            [(highValue)]="maxValue"
+            [options]="options"
+          ></ng5-slider>
+          <div
+            class="row"
+            style="justify-content: space-between; margin-top: 32px"
+          >
+            <div class="choice-block-3">
+              <p>₩100000</p>
+            </div>
+            <div class="choice-block-3">
+              <p>₩200000</p>
+            </div>
+          </div>
+          <div class="row" style="justify-content: space-between">
+            <div class="choice-block-no-background">
+              <p>최저가</p>
+            </div>
+            <div class="choice-block-no-background">
+              <p>최대가</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          type="button"
+          class="next-button"
+          style="background-color: black; color: white"
+          (click)="scroll()"
+        >
+          다음
+        </button>
+      </div>
+    </div>
+    <div class="slide seven" #seven>
+      <div class="question">
+        <span style="color: black">
+          {{ questionsList[activeStep] }}
+        </span>
+      </div>
+      <div class="row">
+        <div class="block-container">
+          <div [appHighlight]="'black'" class="choice-block-2">
+            <p>거리가 멀리 나갔으면 좋겠어요</p>
+          </div>
+          <div [appHighlight]="'black'" class="choice-block-2">
+            <p>정확도가 높았으면 좋겠어요</p>
+          </div>
+          <div [appHighlight]="'black'" class="choice-block-2">
+            <p>커스토마이징이 가능 해야 해요</p>
+          </div>
+          <div [appHighlight]="'black'" class="choice-block-2">
+            <p>가성비가 좋았으면 해요</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          type="button"
+          class="next-button"
+          style="background-color: black; color: white"
+          (click)="scroll()"
+        >
+          인생 드라이버 추천 보기
+        </button>
+      </div>
+    </div>
+    <div class="slide result" #result>
+      <div class="row">
+        <div *ngIf="showResults" class="block-container">
+          <div class="choice-block-2" *ngFor="let item of showResults">
+            <p>
+              {{ item.value["male Brand"] | json }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
