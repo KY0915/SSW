@@ -11,6 +11,7 @@ import {
 import { FormBuilder, FormControlName, FormGroup } from '@angular/forms';
 import * as mockData from '../../assets/mockData/mockData.json';
 import { LabelType, Options } from 'ng5-slider';
+import * as out from '../../assets/mockData/out.json';
 
 @Component({
   selector: 'app-find-driver-process',
@@ -101,11 +102,12 @@ export class FindDriverProcessComponent implements OnInit {
     this.userForm = this.fb.group({
       handicap: [100],
       score: [100],
-      distance: [100],
+      distance: [200],
       trajectory: [''],
       accuracy: [''],
       CG2: [''],
     });
+
     this.findMatchingDriver(this.usersPreference);
   }
   scrollLeft(e) {
@@ -132,8 +134,28 @@ export class FindDriverProcessComponent implements OnInit {
       this.seven.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  compare(obj1, obj2) {
+    let obj = {};
+    for (let k in obj1) {
+      if (obj1[k] !== obj2[k]) {
+        obj = Object.assign({}, obj1, (obj1[k] = obj2[k]));
+      }
+    }
+    return obj;
+  }
   scroll() {
     console.log(this.userForm);
+    console.log(this.userForm.value);
+
+    this.usersPreference['handicap'] = this.userForm.get('handicap').value;
+    this.usersPreference['score'] = this.userForm.get('score').value as string;
+    this.usersPreference['driverDistance'] = this.userForm.get(
+      'distance'
+    ).value;
+    this.usersPreference['trajectory'] = this.userForm.get('trajectory').value;
+    this.usersPreference['accuracy'] = this.userForm.get('accuracy').value;
+
     this.activeStep += 1;
     if (this.activeStep === 1) {
       this.two.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -171,10 +193,10 @@ export class FindDriverProcessComponent implements OnInit {
 
   calcWithHandicap(usersPreference) {
     switch (true) {
-      case usersPreference.handicap >= 21:
+      case usersPreference.handicap < 82:
         this.userDriverPreference.headSize += 1;
         break;
-      case usersPreference.handicap >= 11 && usersPreference < 21:
+      case usersPreference.handicap >= 83 && usersPreference < 97:
         this.userDriverPreference.headSize += 2;
         break;
       default:
@@ -296,7 +318,7 @@ export class FindDriverProcessComponent implements OnInit {
     this.calcWithAccuracy(usersPreference);
     this.calcWithHandicap(usersPreference);
     console.log(this.userDriverPreference);
-    let x = (mockData as any).default;
+    let x = (out as any).default;
     console.log(x);
     const mapped = Object.keys(x).map((key) => ({
       value: x[key],
@@ -347,7 +369,7 @@ export class FindDriverProcessComponent implements OnInit {
 
     if (loftFiltered.length === 0) loftFiltered = headSizeFiltered;
 
-    this.showResults = loftFiltered;
+    this.showResults = loftFiltered.slice(0, 10);
     console.log(loftFiltered);
   }
 
